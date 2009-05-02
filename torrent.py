@@ -3,7 +3,7 @@
 import sys
 import os
 from types import StringType
-# get bencode from http://pypi.python.org/pypi/BitTorrent-bencode/5.0.8
+# get bencode from http://pypi.python.org/pypi/BitTorrent-bencode
 from bencode import bencode, bdecode, BTFailure
 
 try :
