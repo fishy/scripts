@@ -3,8 +3,8 @@
 import sys
 import os
 from types import StringType
-# get bencode from http://pypi.python.org/pypi/BitTorrent-bencode
-from bencode import bencode, bdecode, BTFailure
+# get bencode package from http://github.com/fishy/scripts/downloads
+from bencode.bencode import bencode, bdecode, BTFailure
 
 try :
 	torrent = sys.argv[1]
