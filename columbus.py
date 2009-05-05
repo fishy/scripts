@@ -70,11 +70,10 @@ while 1 :
 print r'</trkseg>'
 print r'</trk>'
 
-if len(waypoints) > 0 :
-	for point in waypoints :
-		print r'<wpt lat="%f" lon="%f"><name>%s</name><desc>%s</desc><time>%s</time><ele>%s</ele><course>%s</course><speed>%s</speed><fix>%s</fix><hdop>%f</hdop><vdop>%f</vdop><pdop>%f</pdop></wpt>' % (
-				point['LATITUDE N/S'], point['LONGITUDE E/W'], point['name'], point['name'],
-				point['time'], point['HEIGHT'], point['HEADING'], point['SPEED'], point['fix'],
-				point['HDOP'], point['VDOP'], point['PDOP'])
+for point in waypoints :
+	print r'<wpt lat="%f" lon="%f"><name>%s</name><desc>%s</desc><time>%s</time><ele>%s</ele><course>%s</course><speed>%s</speed><fix>%s</fix><hdop>%f</hdop><vdop>%f</vdop><pdop>%f</pdop></wpt>' % (
+			point['LATITUDE N/S'], point['LONGITUDE E/W'], point['name'], point['name'],
+			point['time'], point['HEIGHT'], point['HEADING'], point['SPEED'], point['fix'],
+			point['HDOP'], point['VDOP'], point['PDOP'])
 
 print r'</gpx>'
