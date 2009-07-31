@@ -1,7 +1,7 @@
 " projtags.vim
 " Brief: Set tags file for per project
-" Version: 0.2
-" Date: Apr.25, 2007
+" Version: 0.3
+" Date: Jul.31, 2009
 " Author: Yuxuan 'fishy' Wang <fishywang@gmail.com>
 "
 " Installation: put this file under your ~/.vim/plugins/
@@ -21,12 +21,27 @@
 " let g:ProjTags += [[ "~/work/proj2", "~/work/proj2/tags",
 " "~/work/common.tags" ]]
 " 
-" In this case for all file match the pattern "~/work/proj2/*", the tag files
-" "~/work/proj2.tags" and "~/work/common.tags" will be used.
+" In this case for all files match the pattern "~/work/proj2/*", the tag files
+" "~/work/proj2/tags" and "~/work/common.tags" will be used.
+"
+" If one of the items in the list begins with ":", it will be treated as a
+" command (other than tag file):
+"
+" let g:ProjTags += [[ "~/work/proj3", "~/work/proj3/tags",
+" ":set shiftwidth=4" ]]
+"
+" In this case for all files match the pattern "~/work/proj3/*", the tag file
+" "~/work/proj3/tags" will be used, and "shiftwidth=4" will be set.
+"
+" Please note that if you use "set" in the command, we will actually use
+" "setlocal" instead, to avoid polluting the whole vim environment.
 "
 " You can add the above codes into your vimrc file
 "
 " Revisions:
+"
+" 0.3, Jul.31, 2009:
+"  + can add commands now
 "
 " 0.2, Apr.25, 2007:
 "  + more tags file for one directory support (contributed by Joseph Barker)
@@ -47,7 +62,12 @@ function! SetProjTags()
 				let tagfiles = [item . "/tags"]
 			endtry
 			for tagfile in tagfiles
-				execute 'autocmd BufEnter ' . filepattern . ' :setlocal tags+=' . tagfile 
+				if matchstr(tagfile, "^:")
+					let cmd = substitute(tagfile, "^:set ", ":setlocal ", "")
+					execute 'autocmd BufEnter ' . filepattern . ' ' . cmd 
+				else
+					execute 'autocmd BufEnter ' . filepattern . ' :setlocal tags+=' . tagfile 
+				endif
 			endfor
 			unlet item
 		endfor
