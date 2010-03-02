@@ -38,8 +38,11 @@ while 1 :
 				point[names[i]] = float(point[names[i]])
 			except ValueError :
 				pass
-	if point['HDOP'] <= 0 or point['HDOP'] >= 20 or point['VDOP'] <= 0 or point['VDOP'] >= 20 or point['PDOP'] <= 0 or point['PDOP'] >= 20 :
-		continue
+	try :
+		if point['HDOP'] <= 0 or point['HDOP'] >= 20 or point['VDOP'] <= 0 or point['VDOP'] >= 20 or point['PDOP'] <= 0 or point['PDOP'] >= 20 :
+			continue
+	except KeyError :
+		pass
 	if point['VALID'] == 'DGPS' :
 		point['fix'] = 'dgps'
 	elif point['FIX MODE'] == '2D' :
