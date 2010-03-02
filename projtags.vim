@@ -1,7 +1,7 @@
 " projtags.vim
 " Brief: Set tags file for per project
 " Version: 0.4
-" Date: Jul.31, 2009
+" Date: Mar.2, 2010
 " Author: Yuxuan 'fishy' Wang <fishywang@gmail.com>
 "
 " Installation: put this file under your ~/.vim/plugins/
