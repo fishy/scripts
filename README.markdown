@@ -40,6 +40,15 @@ torrent.py
 
 A script to add tracker(s) to a torrent.
 
+unlink.sh
+=========
+
+A script to unlink symbolic links under current directory that matches a regexp.
+
+Useful for uninstalling softwares, like TeXLive.
+
+[http://wang.yuxuan.org/blog/2007/1/5/selective_unlink_script_to_uninstall_texlive](http://wang.yuxuan.org/blog/2007/1/5/selective_unlink_script_to_uninstall_texlive)
+
 LICENSE
 =======
 
