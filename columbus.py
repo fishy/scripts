@@ -43,6 +43,30 @@ while 1 :
 			continue
 	except KeyError :
 		pass
+
+	# fix missed keys
+	try :
+		foo = point['HDOP']
+	except KeyError :
+		point['HDOP'] = 0
+	try :
+		foo = point['VDOP']
+	except KeyError :
+		point['VDOP'] = 0
+	try :
+		foo = point['PDOP']
+	except KeyError :
+		point['PDOP'] = 0
+	try :
+		foo = point['VALID']
+	except KeyError :
+		point['VALID'] = None
+	try :
+		foo = point['FIX MODE']
+	except KeyError :
+		point['FIX MODE'] = None
+
+	point['fix'] = 'none'
 	if point['VALID'] == 'DGPS' :
 		point['fix'] = 'dgps'
 	elif point['FIX MODE'] == '2D' :
