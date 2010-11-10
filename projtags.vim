@@ -1,7 +1,7 @@
 " projtags.vim
 " Brief: Set tags file for per project
-" Version: 0.4
-" Date: Mar.2, 2010
+" Version: 0.41
+" Date: Nov. 10, 2010
 " Author: Yuxuan 'fishy' Wang <fishywang@gmail.com>
 "
 " Installation: put this file under your ~/.vim/plugins/
@@ -40,17 +40,20 @@
 "
 " Revisions:
 "
-" 0.4, Mar.2, 2010:
+" 0.41, Nov. 10, 2010:
+"  * a serious bug regarding the return value of match() fixed thanks to ramp!
+"
+" 0.4, Mar. 2, 2010:
 "  + can handle directories end with "/" now
 "
-" 0.3, Jul.31, 2009:
+" 0.3, Jul. 31, 2009:
 "  + can add commands now
 "
-" 0.2, Apr.25, 2007:
+" 0.2, Apr. 25, 2007:
 "  + more tags file for one directory support (contributed by Joseph Barker)
 "  + check for g:ProjTags before use it
 "
-" 0.1, Apr.24, 2007:
+" 0.1, Apr. 24, 2007:
 "  * initial version
 "
 
@@ -59,8 +62,8 @@ function! SetProjTags()
 		for item in g:ProjTags
 			try
 				let [filepattern; tagfiles] = item
-				if !match(filepattern, "\/$")
-					filepattern .= "/"
+				if match(filepattern, "\/$") == -1
+					let filepattern .= "/"
 				endif
 				let filepattern .= "*"
 			catch /.*List.*/ " item is not a list
@@ -71,7 +74,7 @@ function! SetProjTags()
 				let tagfiles = [item . "tags"]
 			endtry
 			for tagfile in tagfiles
-				if match(tagfile, "^:")
+				if match(tagfile, "^:") != -1
 					let cmd = substitute(tagfile, "^:set ", ":setlocal ", "")
 					execute 'autocmd BufEnter ' . filepattern . ' ' . cmd 
 				else
