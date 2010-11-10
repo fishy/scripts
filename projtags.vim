@@ -67,7 +67,7 @@ function! SetProjTags()
 				endif
 				let filepattern .= "*"
 			catch /.*List.*/ " item is not a list
-				if !match(item, "\/$")
+				if match(item, "\/$") == -1
 					item .= "/"
 				endif
 				let filepattern = item . "*"
