@@ -1,5 +1,12 @@
 A collection of my various scripts.
 
+fix-epub.py
+===========
+
+A script to add "xml:lang" parameter to html tags within a epub file.
+
+[http://wang.yuxuan.org/blog/2011/1/22/fix_epubs](http://wang.yuxuan.org/blog/2011/1/22/fix_epubs)
+
 projtags.vim
 ============
 
