@@ -7,9 +7,9 @@ import shutil
 
 lang = "zh-CN"
 
-skip_keyword = "xml:lang"
+tag = "xml:lang"
 html_re = re.compile(r'(\<html[^\>]*)\>')
-replace = r'\1 xml:lang="' + lang + r'" >'
+replace = r'\1 ' + tag + r'="' + lang + r'" >'
 
 try :
 	epub = sys.argv[1]
@@ -18,6 +18,7 @@ except IndexError :
 	sys.exit()
 
 tmpdir = tempfile.mkdtemp()
+logfile = os.fdopen(2, 'w')	# use stderr
 
 def addZip(archive, base) :
 	dirname = os.path.join(tmpdir, base)
@@ -26,19 +27,23 @@ def addZip(archive, base) :
 		fullname = os.path.join(tmpdir, filename)
 		if os.path.isfile(fullname) :
 			if f.lower().endswith("html") or f.lower().endswith("xml") :
-				[tmpfile, tmpfilename] = tempfile.mkstemp()
-				tmpfile = os.fdopen(tmpfile, 'w')
+				[tmpFile, tmpName] = tempfile.mkstemp()
+				tmpFile = os.fdopen(tmpFile, 'w')
 				htmlFile = open(fullname, 'r')
 				for line in htmlFile.xreadlines() :
-					if line.find(skip_keyword) == -1 :
+					if line.find(tag) == -1 :
 						newline = html_re.sub(replace, line)
 						if newline != line :
-							print filename + ":\n" + line + newline
+							logfile.write(filename + ":\n")
+							logfile.write(line)
+							logfile.write("->\n")
+							logfile.write(newline)
+							logfile.write("\n")
 						line = newline
-					tmpfile.write(line)
-				tmpfile.close()
+					tmpFile.write(line)
+				tmpFile.close()
 				os.remove(fullname)
-				os.rename(tmpfilename, fullname)
+				os.rename(tmpName, fullname)
 			archive.write(fullname, filename)
 		elif os.path.isdir(fullname) :
 			addZip(archive, filename)
@@ -52,6 +57,5 @@ epubFile = zipfile.ZipFile(epub, "w", zipfile.ZIP_DEFLATED)
 addZip(epubFile, '.')
 epubFile.close()
 
-#print tmpdir
 shutil.rmtree(tmpdir)
 
