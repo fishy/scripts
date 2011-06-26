@@ -3,7 +3,7 @@ A collection of my various scripts.
 onepwd.py
 =========
 
-A desktop companion for the chrome extension [One Password](https://chrome.google.com/webstore/detail/pahmlghhaoabdlhnkmmjbkcmdamjccjj):
+A desktop companion for the chrome extension [One Password](https://chrome.google.com/webstore/detail/pahmlghhaoabdlhnkmmjbkcmdamjccjj).
 
 fix-epub.py
 ===========
