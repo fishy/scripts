@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-import sys
-import re, getpass
+import sys, getpass
 import hmac, hashlib, base64
 
 try :
