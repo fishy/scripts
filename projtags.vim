@@ -1,7 +1,7 @@
 " projtags.vim
 " Brief: Set tags file for per project
-" Version: 0.41
-" Date: Nov. 10, 2010
+" Version: 0.42
+" Date: Jul. 18, 2010
 " Author: Yuxuan 'fishy' Wang <fishywang@gmail.com>
 "
 " Installation: put this file under your ~/.vim/plugins/
@@ -40,6 +40,9 @@
 "
 " Revisions:
 "
+" 0.42, Jul. 18, 2010:
+"  + added missing "let" thanks to Adam!
+"
 " 0.41, Nov. 10, 2010:
 "  * a serious bug regarding the return value of match() fixed thanks to ramp!
 "
@@ -68,7 +71,7 @@ function! SetProjTags()
 				let filepattern .= "*"
 			catch /.*List.*/ " item is not a list
 				if match(item, "\/$") == -1
-					item .= "/"
+					let item .= "/"
 				endif
 				let filepattern = item . "*"
 				let tagfiles = [item . "tags"]
