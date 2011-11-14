@@ -61,6 +61,11 @@ Useful for uninstalling softwares, like TeXLive.
 
 http://wang.yuxuan.org/blog/2007/1/5/selective_unlink_script_to_uninstall_texlive
 
+resize-for-picasa.sh
+====================
+
+A script to resize all jpegs on current directory for Picasa Web Album.
+
 LICENSE
 =======
 
