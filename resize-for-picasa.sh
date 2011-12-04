@@ -11,7 +11,7 @@ for file in *.${ext}; do
 	else
 		target=${prepend}${file}
 		echo "resizing ${file} to ${target} ..."
-		convert -resize ${size} ${file} ${target}
+		convert -resize ${size}\> ${file} ${target}
 		echo "renaming ${target} to ${file} ..."
 		mv ${target} ${file}
 	fi
