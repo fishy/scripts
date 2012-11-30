@@ -1,6 +1,6 @@
 #!/bin/sh
 
-size="2048x2048"
+size=${1:-"2048x2048"}
 prepend="resize_"
 ext="jpg"
 otherext="JPG"
