@@ -6,20 +6,24 @@ ext="jpg"
 otherext="JPG"
 
 for file in *.${otherext}; do
-	target=${file%.${otherext}}.${ext}
-	echo "pre-renaming ${file} to ${target} ..."
-	mv ${file} ${target}
+	if [ -f ${file} ]; then
+		target=${file%.${otherext}}.${ext}
+		echo "pre-renaming ${file} to ${target} ..."
+		mv ${file} ${target}
+	fi
 done
 
 for file in *.${ext}; do
-	already=`echo "${file}" | grep "${prepend}"`
-	if [ -n "${already}" ]; then
-		echo "skipping ${file} ..."
-	else
-		target=${prepend}${file}
-		echo "resizing ${file} to ${target} ..."
-		convert -resize ${size}\> "${file}" "${target}"
-		echo "renaming ${target} to ${file} ..."
-		mv "${target}" "${file}"
+	if [ -f ${file} ]; then
+		already=`echo "${file}" | grep "${prepend}"`
+		if [ -n "${already}" ]; then
+			echo "skipping ${file} ..."
+		else
+			target=${prepend}${file}
+			echo "resizing ${file} to ${target} ..."
+			convert -resize ${size}\> "${file}" "${target}"
+			echo "renaming ${target} to ${file} ..."
+			mv "${target}" "${file}"
+		fi
 	fi
 done
