@@ -3,6 +3,13 @@
 size="2048x2048"
 prepend="resize_"
 ext="jpg"
+otherext="JPG"
+
+for file in *.${otherext}; do
+	target=${file%.${otherext}}.${ext}
+	echo "pre-renaming ${file} to ${target} ..."
+	mv ${file} ${target}
+done
 
 for file in *.${ext}; do
 	already=`echo "${file}" | grep "${prepend}"`
