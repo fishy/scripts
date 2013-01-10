@@ -12,13 +12,6 @@ A script to add "xml:lang" parameter to html tags within a epub file.
 
 http://wang.yuxuan.org/blog/2011/1/22/fix_epubs
 
-projtags.vim
-============
-
-A vim script to set tags file for per project.
-
-http://www.vim.org/scripts/script.php?script_id=1873
-
 columbus.py
 ===========
 
@@ -70,3 +63,10 @@ LICENSE
 =======
 
 All scripts licensed under [GPL](http://www.gnu.org/licenses/gpl.html)
+
+projtags.vim
+============
+
+To make it compatiable with [pathogen.vim](https://github.com/tpope/vim-pathogen), projtags.vim now has its own repository at:
+
+https://github.com/fishy/projtags-vim
