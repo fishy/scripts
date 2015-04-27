@@ -59,6 +59,18 @@ resize-for-picasa.sh
 
 A script to resize all jpegs on current directory for Picasa Web Album.
 
+refresh-applications.sh
+=======================
+
+A script to put a random file under /Applications and then remove it.
+
+Useful for putting /Applications stack onto your Mac OS X dock.
+
+update-buckversion.sh
+=====================
+
+A script to update the .buckversion file at current directory.
+
 LICENSE
 =======
 
