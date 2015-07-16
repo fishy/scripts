@@ -79,6 +79,8 @@ if "desc" in form:
 for item in plus['items']:
   if item['verb'] != 'post':
     continue
+  if item['provider']['title'] != 'Google+':
+    continue
 
   url = item['url']
 
