@@ -71,6 +71,11 @@ update-buckversion.sh
 
 A script to update the .buckversion file at current directory.
 
+rssplus.py
+==========
+
+A python cgi to get RSS from someone's public Google+ posts.
+
 LICENSE
 =======
 
