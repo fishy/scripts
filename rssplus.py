@@ -12,14 +12,14 @@ def error(msg):
   exit(0)
 
 def convertUtf8(data):
-  if isinstance(data, dict):
+  if isinstance(data, unicode):
+    return data.encode('utf-8')
+  elif isinstance(data, dict):
     for key in data.keys():
       data[key] = convertUtf8(data[key])
   elif isinstance(data, list):
     for i in range(len(data)):
       data[i] = convertUtf8(data[i])
-  elif isinstance(data, unicode):
-    return data.encode('utf-8')
   return data
 
 def cut(s, chars):
