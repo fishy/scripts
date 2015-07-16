@@ -18,7 +18,7 @@ def convertUtf8(data):
   elif isinstance(data, list):
     for i in range(len(data)):
       data[i] = convertUtf8(data[i])
-  elif not isinstance(data, int):
+  elif isinstance(data, unicode):
     return data.encode('utf-8')
   return data
 
