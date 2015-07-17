@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # vim:et:ts=2:sw=2
 
-import cgi, datetime, email.utils, io, json, re, time, urllib2
+import cgi, datetime, email.utils, json, re, time, urllib2
 
 CONFIG_FILE = 'rssplus.config.json'
 URL = 'https://www.googleapis.com/plus/v1/people/%s/activities/public?key=%s'
