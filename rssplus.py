@@ -51,6 +51,15 @@ form = cgi.FieldStorage()
 if "id" not in form:
   error('"id" is required')
 id = form.getfirst('id', None)
+
+try:
+  ids = config['ids']
+  if not id in ids:
+    error('id %s not whitelisted' % id)
+except KeyError:
+  # No whitelist, just allow everything.
+  pass
+
 if not re.match(r'^[0-9]*$', id):
   id = '+' + id
 name = id
