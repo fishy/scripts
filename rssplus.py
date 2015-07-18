@@ -62,8 +62,6 @@ print('<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">')
 print('<channel>')
 print('<docs>http://blogs.law.harvard.edu/tech/rss</docs>')
 print('<link>https://plus.google.com/%s</link>' % id)
-if "desc" in form:
-  print('<description>%s</description>' % form.getfirst("desc", None))
 
 plus = convertUtf8(json.load(urllib2.urlopen(URL % (id, key))))
 
@@ -71,6 +69,10 @@ if len(plus['items']) > 0:
   name = cgi.escape(plus['items'][0]['actor']['displayName'])
 
 print('<title>%s\'s G+ feed</title>' % name)
+if "desc" in form:
+  print('<description>%s</description>' % form.getfirst("desc", None))
+else:
+  print('<description>%s\'s G+ feed</description>' % name)
 
 minl = max(0, int(form.getfirst('min', "2")) - 1)
 
