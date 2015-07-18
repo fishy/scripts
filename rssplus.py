@@ -85,6 +85,8 @@ if len(plus['items']) > 0:
 
 print('<title>%s\'s G+ feed</title>' % name)
 
+minl = max(0, int(form.getfirst('min', "2")) - 1)
+
 # RSS items
 for item in plus['items']:
   if item['verb'] != 'post':
@@ -100,7 +102,6 @@ for item in plus['items']:
 
   obj = item['object']['content']
   lines = filter(None, obj.split('<br />'))
-  minl = max(0, int(form.getfirst('min', "2")) - 1)
   if len(lines) <= minl:
     continue
   title = cut(lines[0], '.!?')
