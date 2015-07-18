@@ -22,19 +22,6 @@ def convertUtf8(data):
       data[i] = convertUtf8(data[i])
   return data
 
-def cut(s, chars):
-  n = -1
-  for c in chars:
-    index = s.find(c)
-    if index == -1:
-      continue
-    if n == -1 or index < n:
-      n = index
-  n = n + 1
-  if n == 0:
-    return s
-  return s[:n]
-
 try:
   config = json.load(open(CONFIG_FILE))
 except IOError:
@@ -104,7 +91,7 @@ for item in plus['items']:
   lines = filter(None, obj.split('<br />'))
   if len(lines) <= minl:
     continue
-  title = cut(lines[0], '.!?')
+  title = cgi.escape(lines[0])
   
   if 'attachments' in item['object'].keys():
     for att in item['object']['attachments']:
@@ -132,7 +119,7 @@ for item in plus['items']:
 
   # RSS item
   print('<item>')
-  print('<title>%s</title>' % cgi.escape(title))
+  print('<title>%s</title>' % title)
   print('<link>%s</link>' % url)
   print('<guid>%s</guid>' % url)
   print('<pubDate>%s</pubDate>' % date)
