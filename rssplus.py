@@ -93,7 +93,7 @@ for item in plus['items']:
   lines = filter(None, obj.split('<br />'))
   if len(lines) <= minl:
     continue
-  title = cgi.escape(re.sub(r'\<.*?\>', '', lines[0]))
+  title = re.sub(r'\<.*?\>', '', lines[0])
   
   if 'attachments' in item['object'].keys():
     for att in item['object']['attachments']:
