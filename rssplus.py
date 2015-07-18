@@ -81,7 +81,7 @@ if "desc" in form:
 plus = convertUtf8(json.load(urllib2.urlopen(URL % (id, key))))
 
 if len(plus['items']) > 0:
-  name = plus['items'][0]['actor']['displayName']
+  name = cgi.escape(plus['items'][0]['actor']['displayName'])
 
 print('<title>%s\'s G+ feed</title>' % name)
 
