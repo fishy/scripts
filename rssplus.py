@@ -106,9 +106,12 @@ for item in plus['items']:
             % (att['url'], img['url'], img['height'], img['width'])
       elif t == 'article' or t == 'video':
         link = '<a href="%s">%s</a>' % (att['url'], att['displayName'])
-        img = att['image']
-        image = '<a href="%s"><img src="%s" height="%s" width="%s" /></a>' \
-            % (att['url'], img['url'], img['height'], img['width'])
+        try:
+          img = att['image']
+          image = '<a href="%s"><img src="%s" height="%s" width="%s" /></a>' \
+              % (att['url'], img['url'], img['height'], img['width'])
+        except KeyError:
+          pass
       elif t == 'album':
         link = '<a href="%s">%s</a>' % (att['url'], att['displayName'])
         img = att['thumbnails'][0]['image']
