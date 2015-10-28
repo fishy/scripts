@@ -101,9 +101,8 @@ for item in plus['items']:
       link = None
       image = None
       if t == 'photo':
-        img = att['fullImage']
-        image = '<a href="%s"><img src="%s" height="%s" width="%s" /></a>' \
-            % (att['url'], img['url'], img['height'], img['width'])
+        img = att['image']
+        image = '<a href="%s"><img src="%s" /></a>' % (att['url'], img['url'])
       elif t == 'article' or t == 'video':
         link = '<a href="%s">%s</a>' % (att['url'], att['displayName'])
         try:
