@@ -29,7 +29,7 @@ function find_next_available_date($date, $cachedate) {
 			$i--;
 			break;
 		}
-		$ch = curl_init(date2url($day));
+		$ch = curl_init(date2img($day));
 		curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
 		curl_setopt($ch, CURLOPT_FILE, $fp);
 		curl_exec($ch);
