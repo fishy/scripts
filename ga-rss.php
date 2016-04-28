@@ -76,7 +76,7 @@ if($cacheday == 0 || $lastcheck == 0 || (time() - $lastcheck) > 60*30) {
 <link>http://www.garfield.com/comics/comics_todays.html</link>
 <description>The daily comic of Garfield, from ucomics.com</description>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
-<atom:link href="http://selif.yhsif.com/ga-rss.php" rel="self" type="application/rss+xml" />
+<atom:link href="https://selif.yhsif.com/ga-rss.php" rel="self" type="application/rss+xml" />
 <?php
 for($i = 0; $i < $count; $i++) {
 	$img = date2img($lastday);
