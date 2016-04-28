@@ -31,6 +31,7 @@ function find_next_available_date($date, $cachedate) {
 		}
 		$ch = curl_init(date2img($day));
 		curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
 		curl_setopt($ch, CURLOPT_FILE, $fp);
 		curl_exec($ch);
 		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
