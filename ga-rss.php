@@ -9,8 +9,12 @@ function shift_days($date, $days) {
 	return mktime(0, 0, 0, date("m", $date), date("d", $date) + $days, date("Y", $date));
 }
 
-function date2url($date) {
+function date2img($date) {
 	return 'http://images.ucomics.com/comics/ga/' . date("Y", $date) . '/ga' . date("ymd", $date) . '.gif';
+}
+
+function date2url($date) {
+	return 'http://www.gocomics.com/garfield/' . date("Y", $date) . '/' . date("m", $date) . '/' . date("d", $date);
 }
 
 function find_next_available_date($date, $cachedate) {
@@ -74,10 +78,11 @@ if($cacheday == 0 || $lastcheck == 0 || (time() - $lastcheck) > 60*30) {
 <atom:link href="http://selif.yhsif.com/ga-rss.php" rel="self" type="application/rss+xml" />
 <?php
 for($i = 0; $i < $count; $i++) {
+	$img = date2img($lastday);
 	$url = date2url($lastday);
 	$title = "Garfield comic " . date("Y-m-d", $lastday);
 	$date = date("r", $lastday);
-	$desc = "<![CDATA[<img src=\"$url\" />]]>";
+	$desc = "<![CDATA[<img src=\"$img\" />]]>";
 	print <<<EOLAST
 <item>
 <title>$title</title>
