@@ -76,6 +76,11 @@ rssplus.py
 
 A python cgi to get RSS from someone's public Google+ posts.
 
+doorcode.py
+===========
+
+A script to generate a random code (to be used on smart locks).
+
 LICENSE
 =======
 
