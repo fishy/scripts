@@ -5,6 +5,11 @@ prepend="resize_"
 ext="jpg"
 otherext="JPG"
 
+if [ -z "`which gm`" ]; then
+	echo "Please install GraphicsMagick first."
+	exit -1
+fi
+
 for file in *.${otherext}; do
 	if [ -f ${file} ]; then
 		target=${file%.${otherext}}.${ext}
