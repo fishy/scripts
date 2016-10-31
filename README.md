@@ -84,7 +84,9 @@ A script to generate a random code (to be used on smart locks).
 LICENSE
 =======
 
-All scripts licensed under [GPL](https://www.gnu.org/licenses/gpl.html)
+All scripts licensed under
+[BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause),
+refer to the LICENSE file for more details.
 
 projtags.vim
 ============
