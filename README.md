@@ -3,7 +3,8 @@ A collection of my various scripts.
 onepwd.py
 =========
 
-A desktop companion for the chrome extension [One Password](https://chrome.google.com/webstore/detail/pahmlghhaoabdlhnkmmjbkcmdamjccjj).
+A desktop companion for the chrome extension
+[One Password](https://chrome.google.com/webstore/detail/pahmlghhaoabdlhnkmmjbkcmdamjccjj).
 
 fix-epub.py
 ===========
@@ -91,6 +92,8 @@ refer to the LICENSE file for more details.
 projtags.vim
 ============
 
-To make it compatiable with [pathogen.vim](https://github.com/tpope/vim-pathogen), projtags.vim now has its own repository at:
+To make it compatiable with
+[pathogen.vim](https://github.com/tpope/vim-pathogen)
+(or any other vim plugin manager), projtags.vim now has its own repository at:
 
 https://github.com/fishy/projtags-vim
