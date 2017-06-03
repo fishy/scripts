@@ -46,5 +46,5 @@ sys.stderr.write('\n')
 for length in lengths :
 	sys.stdout.write('%4d: ' % length)
 	sys.stdout.write(pwd[:length])
+	sys.stdout.write('\n')
 	sys.stdout.flush()
-	sys.stderr.write('\n')
