@@ -69,6 +69,24 @@ A python cgi to get RSS from someone's public Google+ posts.
 
 A script to generate a random code (to be used on smart locks).
 
+## pinentry-local.sh
+
+A selector for pinentry, auto chooses `pinentry-tty` inside ssh sessions and
+chooses `pinentry-gui` outside of ssh sessions.
+It can be set as your `pinentry-program` inside your `gpg-agent.conf` file.
+
+There's probably no such thing as `pinentry-gui` on your system,
+but you could create a symbolic link from the actual one,
+usually `pinentry-qt`, `pinentry-gtk-2`, `pinentry-mac`, etc.
+If there's no `pinentry-tty` on your system you can also create a symbolic link
+from `pinentry-curses`.
+
+## reload-gpg-agent.sh
+
+Kills gpg-agent and then reload it.
+This helps use the different pinentry when you are switching between GUI and
+TTY. (ssh and local, see pinentry-local.sh above)
+
 ## LICENSE
 
 All scripts licensed under
