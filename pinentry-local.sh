@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z "$SSH_TTY" ]; then
-  exec `which pinentry-gui` "$@"
+  exec `which pinentry-mac` "$@"
 else
-  exec `which pinentry-tty` "$@"
+  exec `which pinentry-curses` "$@"
 fi
