@@ -82,6 +82,28 @@ Kills gpg-agent and then reload it.
 This helps use the different pinentry when you are switching between GUI and
 TTY. (ssh and local, see pinentry-local.sh above)
 
+## start-service-until-success.sh
+
+If you are using some services depending on libsodium (e.g. `php7.2-fpm`)
+on some cloud provider (e.g. GCP),
+you might noticed that it fails to start upon boot.
+That's because cloud providers usually don't have enough entrophy for libsodium
+upon boot, see
+[this GitHub issue discussion](https://github.com/jedisct1/libsodium-php/issues/94).
+
+This script can be used to loop starting a service until it's started
+successfully.
+You can add it to your `/etc/rc.local` file like this
+(Notice the `&` at the end of line.
+It's important because you usually don't really want to block `/etc/rc.local`
+until your service was started successfully.):
+
+```sh
+# ...
+/usr/local/bin/start-service-until-success.sh php7.2-fpm &
+exit 0
+```
+
 ## LICENSE
 
 All scripts licensed under
