@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys, os, re
 import zipfile
@@ -23,7 +23,7 @@ def addZip(archive, base, curdir) :
 				[tmpFile, tmpName] = tempfile.mkstemp()
 				tmpFile = os.fdopen(tmpFile, 'w')
 				htmlFile = open(fullname, 'r')
-				for line in htmlFile.xreadlines() :
+				for line in htmlFile.readlines() :
 					if line.find(tag) == -1 :
 						newline = html_re.sub(replace, line)
 						if newline != line :
@@ -44,7 +44,7 @@ def addZip(archive, base, curdir) :
 try :
 	epub = sys.argv[1]
 except IndexError :
-	print "Usage: \"%s <filename.epub>\" to fix filename.epub, get filename.fix.epub" % sys.argv[0]
+	print("Usage: \"%s <filename.epub>\" to fix filename.epub, get filename.fix.epub" % sys.argv[0])
 	sys.exit()
 
 tmpdir = tempfile.mkdtemp()
