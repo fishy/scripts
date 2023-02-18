@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # vim:et:ts=2:sw=2
 
 import cgi, datetime, email.utils, json, re, time, urllib2

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import re
@@ -11,13 +11,13 @@ for i in range(len(names)) : names[i] = names[i].strip(' \t\r\n\x00')
 
 timere = re.compile(r'(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)')
 
-print r'<?xml version="1.0" encoding="UTF-8"?>'
-print r'<gpx version="1.1" xmlns="http://www.topografix.com/GPX/1/1">'
+print(r'<?xml version="1.0" encoding="UTF-8"?>')
+print(r'<gpx version="1.1" xmlns="http://www.topografix.com/GPX/1/1">')
 
 waypoints = []
 
-print r'<trk>'
-print r'<trkseg>'
+print(r'<trk>')
+print(r'<trkseg>')
 while 1 :
 	line = sys.stdin.readline().strip()
 	if not line : break
@@ -90,17 +90,17 @@ while 1 :
 	if point['TAG'] == 'C' :
 		point['name'] = "Waypoint #%d" % len(waypoints)
 	if len(point['name']) > 0 : waypoints.append(point)
-	print r'<trkpt lat="%f" lon="%f"><time>%s</time><ele>%s</ele><course>%s</course><speed>%s</speed><fix>%s</fix><hdop>%f</hdop><vdop>%f</vdop><pdop>%f</pdop></trkpt>' % (
+	print(r'<trkpt lat="%f" lon="%f"><time>%s</time><ele>%s</ele><course>%s</course><speed>%s</speed><fix>%s</fix><hdop>%f</hdop><vdop>%f</vdop><pdop>%f</pdop></trkpt>' % (
 			point['LATITUDE N/S'], point['LONGITUDE E/W'], point['time'],
 			point['HEIGHT'], point['HEADING'], point['SPEED'], point['fix'],
-			point['HDOP'], point['VDOP'], point['PDOP'])
-print r'</trkseg>'
-print r'</trk>'
+			point['HDOP'], point['VDOP'], point['PDOP']))
+print(r'</trkseg>')
+print(r'</trk>')
 
 for point in waypoints :
-	print r'<wpt lat="%f" lon="%f"><name>%s</name><desc>%s</desc><time>%s</time><ele>%s</ele><course>%s</course><speed>%s</speed><fix>%s</fix><hdop>%f</hdop><vdop>%f</vdop><pdop>%f</pdop></wpt>' % (
+	print(r'<wpt lat="%f" lon="%f"><name>%s</name><desc>%s</desc><time>%s</time><ele>%s</ele><course>%s</course><speed>%s</speed><fix>%s</fix><hdop>%f</hdop><vdop>%f</vdop><pdop>%f</pdop></wpt>' % (
 			point['LATITUDE N/S'], point['LONGITUDE E/W'], point['name'], point['name'],
 			point['time'], point['HEIGHT'], point['HEADING'], point['SPEED'], point['fix'],
-			point['HDOP'], point['VDOP'], point['PDOP'])
+			point['HDOP'], point['VDOP'], point['PDOP']))
 
-print r'</gpx>'
+print(r'</gpx>')

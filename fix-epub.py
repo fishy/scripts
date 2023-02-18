@@ -44,7 +44,7 @@ def addZip(archive, base, curdir) :
 try :
 	epub = sys.argv[1]
 except IndexError :
-	print("Usage: \"%s <filename.epub>\" to fix filename.epub, get filename.fix.epub" % sys.argv[0])
+	print('Usage: "%s <filename.epub>" to fix filename.epub, get filename.fix.epub' % sys.argv[0])
 	sys.exit()
 
 tmpdir = tempfile.mkdtemp()

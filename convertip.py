@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import re
@@ -30,7 +30,7 @@ def printrange(startip, endip) :
 		mask = (mask<<1) + 1
 	newip = startip | mask
 	bits = 32 - bits
-	print "%s/%d" % (int2ip(startip), bits)
+	print("%s/%d" % (int2ip(startip), bits))
 	if newip < endip : 
 		printrange(newip + 1, endip)
 
@@ -38,7 +38,7 @@ while 1 :
 	line = sys.stdin.readline().strip()
 	if not line : break
 	chars = line.split(" ")
-	print "#%s - %s" % (chars[0], chars[1])
+	print("#%s - %s" % (chars[0], chars[1]))
 	ip1 = ip2int(chars[0])
 	ip2 = ip2int(chars[1])
 	printrange(ip1, ip2)

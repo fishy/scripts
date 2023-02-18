@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys
 from Foundation import *
@@ -12,7 +12,7 @@ for person in ab.people():
     lname = person.lastName()
     plname = person.phoneticLastName()
     note = person.note()
-    print "%s %s %s %s %s" % (fname, pfname, lname, plname, note)
+    print("%s %s %s %s %s" % (fname, pfname, lname, plname, note))
 
     if pfname and plname:
 	cname = lname + fname
@@ -26,5 +26,5 @@ for person in ab.people():
 	person.setLastName_(plname)
 	person.setNote_(note)
 
-print "Done."
+print("Done.")
 
