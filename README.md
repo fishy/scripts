@@ -5,6 +5,11 @@ A collection of my various scripts.
 A desktop companion for the chrome extension
 [One Password](https://chrome.google.com/webstore/detail/pahmlghhaoabdlhnkmmjbkcmdamjccjj).
 
+## convert2gpx.sh
+
+Detect format from file extension then call
+[gpsbabel](https://www.gpsbabel.org/) to convert to GPX file.
+
 ## fix-epub.py
 
 A script to add "xml:lang" parameter to html tags within a epub file.
