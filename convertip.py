@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
 
 import sys
 import re
 
 def ip2int(ip) :
 	ret = 0
-	match = re.match("(\d*)\.(\d*)\.(\d*)\.(\d*)", ip)
+	match = re.match(r"(\d*)\.(\d*)\.(\d*)\.(\d*)", ip)
 	if not match : return 0
 	for i in xrange(4) : ret = (ret << 8) + int(match.groups()[i])
 	return ret

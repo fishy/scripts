@@ -1,15 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# dependencies = ["bencoding"]
+# ///
 
 import sys
 import os
-from types import StringType
 # get bencode package from http://github.com/fishy/scripts/downloads
-from bencode.bencode import bencode, bdecode, BTFailure
+from bencoding import bencode, bdecode
 
 try :
 	torrent = sys.argv[1]
 except IndexError :
-	print "Usage: \"%s <torrent_file> [tracker_url]\" to show torrent info (without tracker_url), or to add tracker(s)" % sys.argv[0]
+	print("Usage: \"%s <torrent_file> [tracker_url]\" to show torrent info (without tracker_url), or to add tracker(s)" % sys.argv[0])
 	sys.exit()
 
 size = os.stat(torrent).st_size
@@ -19,27 +22,26 @@ file.close()
 info = bdecode(data)
 
 if len(sys.argv) == 2 :
-	print info
+	del info[b'info'][b'pieces']
+	print(info)
 	sys.exit()
 
-if 'announce-list' not in info :
-	list = [info['announce']]
+if b'announce-list' not in info :
+	list = [info[b'announce']]
 	for i in range(len(sys.argv)-2) :
-		tracker = sys.argv[i+2]
+		tracker = [sys.argv[i+2].encode('utf-8')]
 		if tracker not in list :
 			list.append(tracker)
-	print list
-	info['announce-list'] = [list]
+	print(list)
+	info[b'announce-list'] = list
 else :
-	list = info['announce-list'][0]
-	if type(list) == StringType :
-		list = [list]
+	list = info[b'announce-list']
 	for i in range(len(sys.argv)-2) :
-		tracker = sys.argv[i+2]
+		tracker = [sys.argv[i+2].encode('utf-8')]
 		if tracker not in list :
 			list.append(tracker)
-	print list
-	info['announce-list'][0] = list
+	print(list)
+	info[b'announce-list'] = list
 
 writedata = bencode(info)
 file = open(torrent, "wb")
